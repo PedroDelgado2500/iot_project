@@ -1,0 +1,1213 @@
+[
+    {
+        "id": "a4b53cbd8cbac412",
+        "type": "tab",
+        "label": "Projeto IC",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "78fcc6c0c1e10af6",
+        "type": "mqtt in",
+        "z": "a4b53cbd8cbac412",
+        "name": "IPB/IoT/Lab/AirQuality",
+        "topic": "IPB/IoT/Lab/AirQuality",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "516b61f82ffd165a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 340,
+        "y": 100,
+        "wires": [
+            [
+                "35058a4a829a4c1d",
+                "cbb6beca29e250b0",
+                "7c6163fa7f9fcfd2",
+                "24560c958e30de31"
+            ]
+        ]
+    },
+    {
+        "id": "35058a4a829a4c1d",
+        "type": "change",
+        "z": "a4b53cbd8cbac412",
+        "name": "Humidade",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hum",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 80,
+        "wires": [
+            [
+                "0b3601c16439eb52"
+            ]
+        ]
+    },
+    {
+        "id": "24560c958e30de31",
+        "type": "change",
+        "z": "a4b53cbd8cbac412",
+        "name": "Temperatura",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 40,
+        "wires": [
+            [
+                "c09e7998ed6eec6b"
+            ]
+        ]
+    },
+    {
+        "id": "08016f19f104f762",
+        "type": "ui_gauge",
+        "z": "a4b53cbd8cbac412",
+        "name": "Temperatura",
+        "group": "07373e651b2b0f26",
+        "order": 2,
+        "width": "4",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "ºC",
+        "format": "{{value}}",
+        "min": "-15",
+        "max": "60",
+        "colors": [
+            "#0d53bb",
+            "#fff700",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 930,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f6ea5e74e3f7b71d",
+        "type": "ui_gauge",
+        "z": "a4b53cbd8cbac412",
+        "name": "Humidade",
+        "group": "07373e651b2b0f26",
+        "order": 3,
+        "width": "4",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Humidade",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ee1111",
+            "#9500e6",
+            "#3a3ecb"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 940,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "c09e7998ed6eec6b",
+        "type": "json",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 710,
+        "y": 40,
+        "wires": [
+            [
+                "08016f19f104f762"
+            ]
+        ]
+    },
+    {
+        "id": "0b3601c16439eb52",
+        "type": "json",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 710,
+        "y": 80,
+        "wires": [
+            [
+                "f6ea5e74e3f7b71d"
+            ]
+        ]
+    },
+    {
+        "id": "cbb6beca29e250b0",
+        "type": "change",
+        "z": "a4b53cbd8cbac412",
+        "name": "IAQ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.iaq",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 120,
+        "wires": [
+            [
+                "9348a8d939bf5f04"
+            ]
+        ]
+    },
+    {
+        "id": "2428a4dba779f79a",
+        "type": "ui_gauge",
+        "z": "a4b53cbd8cbac412",
+        "name": "Índice de IAQ",
+        "group": "07373e651b2b0f26",
+        "order": 3,
+        "width": "4",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Índice de IAQ",
+        "label": "pior",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "500",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 920,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9348a8d939bf5f04",
+        "type": "json",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 710,
+        "y": 120,
+        "wires": [
+            [
+                "2428a4dba779f79a"
+            ]
+        ]
+    },
+    {
+        "id": "7c6163fa7f9fcfd2",
+        "type": "change",
+        "z": "a4b53cbd8cbac412",
+        "name": "CO2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.co2_eqv",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 160,
+        "wires": [
+            [
+                "ea0d0ef5e88a1d3c",
+                "16e0f8bf3d94562a"
+            ]
+        ]
+    },
+    {
+        "id": "5707a0a42dec2ba1",
+        "type": "ui_gauge",
+        "z": "a4b53cbd8cbac412",
+        "name": "Concentração de CO2",
+        "group": "07373e651b2b0f26",
+        "order": 3,
+        "width": "4",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Concentração de CO2",
+        "label": "ppm",
+        "format": "{{value}}",
+        "min": "200",
+        "max": "7000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 900,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ea0d0ef5e88a1d3c",
+        "type": "json",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 710,
+        "y": 160,
+        "wires": [
+            [
+                "5707a0a42dec2ba1"
+            ]
+        ]
+    },
+    {
+        "id": "ec6091c21d7bf8ba",
+        "type": "mqtt in",
+        "z": "a4b53cbd8cbac412",
+        "name": "IPB/IoT/Lab/ExternalNode",
+        "topic": "IPB/IoT/Lab/ExternalNode",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "516b61f82ffd165a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 350,
+        "y": 260,
+        "wires": [
+            [
+                "5da8e261f7836ab1",
+                "745c69235db92c3c"
+            ]
+        ]
+    },
+    {
+        "id": "745c69235db92c3c",
+        "type": "change",
+        "z": "a4b53cbd8cbac412",
+        "name": "Humidade",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hum",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 280,
+        "wires": [
+            [
+                "5f590168d044088a"
+            ]
+        ]
+    },
+    {
+        "id": "5da8e261f7836ab1",
+        "type": "change",
+        "z": "a4b53cbd8cbac412",
+        "name": "Temperatura",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 240,
+        "wires": [
+            [
+                "ec59699443aba62b"
+            ]
+        ]
+    },
+    {
+        "id": "ec59699443aba62b",
+        "type": "json",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 710,
+        "y": 240,
+        "wires": [
+            [
+                "dfae9ee66cf2078b"
+            ]
+        ]
+    },
+    {
+        "id": "5f590168d044088a",
+        "type": "json",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 710,
+        "y": 280,
+        "wires": [
+            [
+                "ba96415d7e0ffd1b"
+            ]
+        ]
+    },
+    {
+        "id": "dfae9ee66cf2078b",
+        "type": "ui_gauge",
+        "z": "a4b53cbd8cbac412",
+        "name": "Temperatura",
+        "group": "9f11818e99f8bb15",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "ºC",
+        "format": "{{value}}",
+        "min": "-15",
+        "max": "60",
+        "colors": [
+            "#1d00f5",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 930,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "ba96415d7e0ffd1b",
+        "type": "ui_gauge",
+        "z": "a4b53cbd8cbac412",
+        "name": "Humidade",
+        "group": "9f11818e99f8bb15",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidade",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#b30c00",
+            "#9820cf",
+            "#1100ff"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 940,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "16e0f8bf3d94562a",
+        "type": "function",
+        "z": "a4b53cbd8cbac412",
+        "name": "CO2",
+        "func": "var co2Data = msg.payload;\nvar currentDate = new Date();\nvar day = currentDate.getDate().toString().padStart(2, '0');\nvar month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based\nvar year = currentDate.getFullYear();\nvar currentDay = `${day}/${month}/${year}`;\n\nvar msg ={\n    payload:[\n        {\n            measurement: \"CO2\",\n            tags:{\n                day: currentDay\n            },\n            fields:{\n                co2: co2Data\n            }\n        }\n    ]\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 200,
+        "wires": [
+            [
+                "689915abfba95232"
+            ]
+        ]
+    },
+    {
+        "id": "689915abfba95232",
+        "type": "influxdb batch",
+        "z": "a4b53cbd8cbac412",
+        "influxdb": "bf47d4d7a5e1c577",
+        "precision": "",
+        "retentionPolicy": "",
+        "name": "Influx - CO2",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "ipb",
+        "bucket": "projetofinal",
+        "x": 930,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "415677477ed24524",
+        "type": "mqtt out",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "topic": "/46161_50891/Janela",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "516b61f82ffd165a",
+        "x": 700,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "365f3af8443ff015",
+        "type": "ui_button",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "group": "b624c8937f85656d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Aberta",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 290,
+        "y": 580,
+        "wires": [
+            [
+                "3f64e04bfb12c71d"
+            ]
+        ]
+    },
+    {
+        "id": "c6f7694a0f892cc9",
+        "type": "ui_button",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "group": "b624c8937f85656d",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Semi-Aberta",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "50",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 310,
+        "y": 620,
+        "wires": [
+            [
+                "3f64e04bfb12c71d"
+            ]
+        ]
+    },
+    {
+        "id": "93a054eea234db10",
+        "type": "ui_button",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "group": "b624c8937f85656d",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Fechada",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "100",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 660,
+        "wires": [
+            [
+                "3f64e04bfb12c71d"
+            ]
+        ]
+    },
+    {
+        "id": "dab1f44ba938e7e0",
+        "type": "ui_gauge",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "group": "b624c8937f85656d",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Janela",
+        "label": "Estado",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#008fb3",
+            "#008fb3",
+            "#008fb3"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 650,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "01d1b14cfa040dcd",
+        "type": "mqtt out",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "topic": "/46161_50891/Cortina",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "516b61f82ffd165a",
+        "x": 700,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "cea53baddea2724b",
+        "type": "function",
+        "z": "a4b53cbd8cbac412",
+        "name": "function 2",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 760,
+        "wires": [
+            [
+                "01d1b14cfa040dcd",
+                "e55f778172783378"
+            ]
+        ]
+    },
+    {
+        "id": "b4247e7a65431cf0",
+        "type": "ui_button",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "group": "b624c8937f85656d",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Alta",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 290,
+        "y": 720,
+        "wires": [
+            [
+                "cea53baddea2724b"
+            ]
+        ]
+    },
+    {
+        "id": "b5d5782a969bbd8b",
+        "type": "ui_button",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "group": "b624c8937f85656d",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Média",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "50",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 290,
+        "y": 760,
+        "wires": [
+            [
+                "cea53baddea2724b"
+            ]
+        ]
+    },
+    {
+        "id": "8cf40ad55d092278",
+        "type": "ui_button",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "group": "b624c8937f85656d",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Baixa",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "100",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 290,
+        "y": 800,
+        "wires": [
+            [
+                "cea53baddea2724b"
+            ]
+        ]
+    },
+    {
+        "id": "e55f778172783378",
+        "type": "ui_gauge",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "group": "b624c8937f85656d",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Cortina",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#008fb3",
+            "#008fb3",
+            "#008fb3"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 660,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "1b3e7c20a8cd9f28",
+        "type": "mqtt out",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "topic": "/46161_50891/AC",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "516b61f82ffd165a",
+        "x": 690,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "59e1a52a7e760709",
+        "type": "function",
+        "z": "a4b53cbd8cbac412",
+        "name": "function 3",
+        "func": "if (msg.payload === 0) {\n    msg.status = \"Ligado\";\n} else if (msg.payload === 100) {\n    msg.status = \"Desligado\";\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 900,
+        "wires": [
+            [
+                "1b3e7c20a8cd9f28",
+                "dfeaa3b8954639b8"
+            ]
+        ]
+    },
+    {
+        "id": "daa10d99c8a801c4",
+        "type": "ui_button",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "group": "e9704a4f1c4f25eb",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LIGADO",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 300,
+        "y": 880,
+        "wires": [
+            [
+                "59e1a52a7e760709"
+            ]
+        ]
+    },
+    {
+        "id": "a20d2739ac16873d",
+        "type": "ui_button",
+        "z": "a4b53cbd8cbac412",
+        "name": "",
+        "group": "e9704a4f1c4f25eb",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "DESLIGADO",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "100",
+        "payloadType": "num",
+        "topic": "",
+        "topicType": "str",
+        "x": 310,
+        "y": 920,
+        "wires": [
+            [
+                "59e1a52a7e760709"
+            ]
+        ]
+    },
+    {
+        "id": "dfeaa3b8954639b8",
+        "type": "ui_text",
+        "z": "a4b53cbd8cbac412",
+        "group": "e9704a4f1c4f25eb",
+        "order": 12,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Ar Condicionado",
+        "format": "{{msg.status}}",
+        "layout": "row-spread",
+        "x": 680,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "3f64e04bfb12c71d",
+        "type": "function",
+        "z": "a4b53cbd8cbac412",
+        "name": "function 1",
+        "func": "return msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 620,
+        "wires": [
+            [
+                "415677477ed24524",
+                "dab1f44ba938e7e0"
+            ]
+        ]
+    },
+    {
+        "id": "36ae679c.caf168",
+        "type": "mqtt in",
+        "z": "a4b53cbd8cbac412",
+        "name": "Temperatura",
+        "topic": "/46161_50891/temperature",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "ec8e5b37.8c7338",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 310,
+        "y": 340,
+        "wires": [
+            [
+                "ad7f4c67.e37f4"
+            ]
+        ]
+    },
+    {
+        "id": "ad7f4c67.e37f4",
+        "type": "ui_text",
+        "z": "a4b53cbd8cbac412",
+        "group": "e94b1d6d.8e254",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "Temperatura",
+        "label": "Temperatura:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 530,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "674d1e67.cce57",
+        "type": "mqtt in",
+        "z": "a4b53cbd8cbac412",
+        "name": "Humidade",
+        "topic": "/46161_50891/humidity",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "ec8e5b37.8c7338",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 300,
+        "y": 400,
+        "wires": [
+            [
+                "97c7c8f6.0edcb8"
+            ]
+        ]
+    },
+    {
+        "id": "97c7c8f6.0edcb8",
+        "type": "ui_text",
+        "z": "a4b53cbd8cbac412",
+        "group": "e94b1d6d.8e254",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Humidade",
+        "label": "Humidade:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 540,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "2e4ddf94.6d1f1",
+        "type": "mqtt in",
+        "z": "a4b53cbd8cbac412",
+        "name": "Luminosidade",
+        "topic": "/46161_50891/light",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "ec8e5b37.8c7338",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 310,
+        "y": 460,
+        "wires": [
+            [
+                "f5a4e6cc.7a4a28"
+            ]
+        ]
+    },
+    {
+        "id": "f5a4e6cc.7a4a28",
+        "type": "ui_text",
+        "z": "a4b53cbd8cbac412",
+        "group": "e94b1d6d.8e254",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Luminosidade",
+        "label": "Luminosidade:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 520,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "bb22c047e9548132",
+        "type": "mqtt in",
+        "z": "a4b53cbd8cbac412",
+        "name": "Movimento",
+        "topic": "/46161_50891/movement",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "516b61f82ffd165a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 300,
+        "y": 520,
+        "wires": [
+            [
+                "c862388ee7c4fe85"
+            ]
+        ]
+    },
+    {
+        "id": "c862388ee7c4fe85",
+        "type": "ui_text",
+        "z": "a4b53cbd8cbac412",
+        "group": "e94b1d6d.8e254",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Movimento",
+        "label": "Lotação:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 530,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "516b61f82ffd165a",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "07373e651b2b0f26",
+        "type": "ui_group",
+        "name": "IPB",
+        "tab": "e0314beee0aff3d5",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "9f11818e99f8bb15",
+        "type": "ui_group",
+        "name": "IPB",
+        "tab": "996f731d743eea69",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "bf47d4d7a5e1c577",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086",
+        "timeout": "10",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "b624c8937f85656d",
+        "type": "ui_group",
+        "name": "Controle de Janela",
+        "tab": "d62bdb78c7bab81a",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e9704a4f1c4f25eb",
+        "type": "ui_group",
+        "name": "Controle",
+        "tab": "e550623e4eea2664",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ec8e5b37.8c7338",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": ""
+    },
+    {
+        "id": "e94b1d6d.8e254",
+        "type": "ui_group",
+        "name": "Clima Local",
+        "tab": "8f3a5a19.2d5c88",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e0314beee0aff3d5",
+        "type": "ui_tab",
+        "name": "IPB - Clima Interno",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "996f731d743eea69",
+        "type": "ui_tab",
+        "name": "IPB - Clima Externo",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "d62bdb78c7bab81a",
+        "type": "ui_tab",
+        "name": "Janela",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e550623e4eea2664",
+        "type": "ui_tab",
+        "name": "Ar Condicionado",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "8f3a5a19.2d5c88",
+        "type": "ui_tab",
+        "name": "Main",
+        "icon": "dashboard",
+        "order": 1
+    }
+]
