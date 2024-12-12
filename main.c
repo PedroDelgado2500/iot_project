@@ -1,6 +1,5 @@
-https://wokwi.com/projects/399307717572388865
+//https://wokwi.com/projects/399307717572388865
 
-Código:
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <ESP32Servo.h>
